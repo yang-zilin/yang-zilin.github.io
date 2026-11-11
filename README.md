@@ -1,4 +1,4 @@
-# 楊子琳 Zilin Yang
+# Zilin Yang
 
 Personal website: https://yang-zilin.github.io
 
@@ -6,7 +6,7 @@ Static HTML and CSS, hosted on GitHub Pages. No dependencies or build step.
 
 ## Edit content
 
-- `index.html`: name, navigation, and the About, Research, Projects, and Contact sections. Content areas are intentionally blank; HTML comments mark insertion points.
+- `index.html`: name, navigation, and the About, Research, Projects, and Contact sections. About, Research, and Projects are intentionally blank; Contact contains the supplied email and Douyin ID. HTML comments mark insertion points.
 - `style.css`: layout, colors, typography, and responsive styles.
 - `assets/portrait.jpg`: user-provided homepage portrait from `112018.JPG`.
 
