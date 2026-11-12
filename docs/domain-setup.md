@@ -6,11 +6,13 @@ Domain registration and renewal remain with GoDaddy. Cloudflare manages DNS on t
 
 ## Setup status — 2026-11-12
 
-Cloudflare is active, and public resolvers return its assigned nameservers and the four GitHub Pages addresses. Both Cloudflare nameservers return consistent website, mail, and verification records. Cloudflare Universal SSL is Active, Full (Strict) is configured, and the HTTPS and WWW redirect settings are saved.
+Setup is complete. GitHub has verified ownership of `zilinyang.com`, and its certificate is approved for both `zilinyang.com` and `www.zilinyang.com` (observed expiration: 2027-02-10). GitHub Enforce HTTPS is enabled.
 
-GitHub still reports the previous DNS configuration, fails the ownership TXT check, and shows its origin certificate in state `new`. HTTP serves the website, but HTTPS is not ready. Website records deliberately remain DNS-only until GitHub finishes validation and issues the origin certificate. Consequently, Cloudflare's deployed redirect rule is not yet handling live traffic.
+Cloudflare is active on the Free plan. The four apex A records and the www CNAME are proxied. All seven mail and service verification records remain DNS-only. Cloudflare Universal SSL is Active, Full (Strict) is configured, Always Use HTTPS is enabled, and the WWW redirect rule is deployed.
 
-Remaining actions after propagation: verify the domain at GitHub account Settings → Pages, confirm the origin certificate covers the required hostnames, enable GitHub Enforce HTTPS, enable Cloudflare proxying for the four apex A records and the www CNAME only, and verify all redirects and assets. Do not enable proxying while the GitHub origin certificate is invalid under Full (Strict).
+Verified: HTTPS certificate validation on all four GitHub Pages origin addresses, browser loading of the HTTPS homepage and portrait, Cloudflare TLS 1.3 at its Singapore edge, HTTP-to-HTTPS redirects, WWW-to-apex redirects with path and query-string preservation, and redirection of `yang-zilin.github.io` to the primary domain. CSS and portrait assets return HTTP 200.
+
+The original certificate request stalled in state `new`. After the DNS records propagated and ownership verification succeeded, removing and re-adding the GitHub custom domain restarted provisioning successfully. The resulting GitHub-generated CNAME commits were pulled into the local working copy.
 
 ## Nameservers
 
@@ -27,7 +29,7 @@ Remaining actions after propagation: verify the domain at GitHub account Setting
 | A | @ | 185.199.111.153 |
 | CNAME | www | yang-zilin.github.io |
 
-Keep website records DNS-only while GitHub validates the domain and issues its certificate. Enable Cloudflare proxying only after the GitHub origin certificate and Cloudflare Universal SSL certificate are ready. Use Full (Strict) encryption when proxying.
+All five website records are proxied through Cloudflare. Use Full (Strict) encryption. During any future certificate or hosting migration, keep records DNS-only until the origin and edge certificates are ready; do not weaken certificate validation to hide an origin error.
 
 ## Preserved service records
 
@@ -48,9 +50,9 @@ Service and verification records must remain DNS-only. The original zone contain
 - `CNAME` in the repository binds GitHub Pages to `zilinyang.com`.
 - The HTML canonical URL is `https://zilinyang.com/`.
 - Cloudflare Always Use HTTPS is enabled.
-- Cloudflare rule `WWW to primary domain` redirects `https://www.zilinyang.com/*` to `https://zilinyang.com/${1}` with HTTP 301 and query-string preservation. Cloudflare rules require proxied website records.
+- Cloudflare rule `WWW to primary domain` redirects `https://www.zilinyang.com/*` to `https://zilinyang.com/${1}` with HTTP 301 and query-string preservation. The website records are proxied, so this rule handles live traffic.
 - Cloudflare's minimum TLS version is 1.2; TLS 1.3 remains enabled.
-- Enable GitHub Pages Enforce HTTPS once its certificate is issued. GitHub Pages then redirects its default `yang-zilin.github.io` hostname to the custom domain.
+- GitHub Pages Enforce HTTPS is enabled. GitHub Pages redirects its default `yang-zilin.github.io` hostname to the custom domain.
 
 Do not configure GoDaddy URL forwarding, wildcard DNS, or a redirect from the apex domain back to `www`: these conflict with the primary-domain setup.
 
