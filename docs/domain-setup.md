@@ -4,6 +4,14 @@ Primary website: https://zilinyang.com/
 
 Domain registration and renewal remain with GoDaddy. Cloudflare manages DNS on the Free plan. GitHub Pages hosts the website from the `main` branch, repository root.
 
+## Setup status — 2026-11-12
+
+Cloudflare is active, and public resolvers return its assigned nameservers and the four GitHub Pages addresses. Both Cloudflare nameservers return consistent website, mail, and verification records. Cloudflare Universal SSL is Active, Full (Strict) is configured, and the HTTPS and WWW redirect settings are saved.
+
+GitHub still reports the previous DNS configuration, fails the ownership TXT check, and shows its origin certificate in state `new`. HTTP serves the website, but HTTPS is not ready. Website records deliberately remain DNS-only until GitHub finishes validation and issues the origin certificate. Consequently, Cloudflare's deployed redirect rule is not yet handling live traffic.
+
+Remaining actions after propagation: verify the domain at GitHub account Settings → Pages, confirm the origin certificate covers the required hostnames, enable GitHub Enforce HTTPS, enable Cloudflare proxying for the four apex A records and the www CNAME only, and verify all redirects and assets. Do not enable proxying while the GitHub origin certificate is invalid under Full (Strict).
+
 ## Nameservers
 
 - `aurora.ns.cloudflare.com`
