@@ -6,7 +6,7 @@ Static HTML and CSS, hosted on GitHub Pages. No dependencies or build step.
 
 ## Edit content
 
-- `index.html`: name, navigation, and the About, Research, Projects, and Contact sections. About, Research, and Projects are intentionally blank; Contact contains the supplied email and Douyin ID. HTML comments mark insertion points.
+- `index.html`: name, navigation, and the About, Research, Projects, and Contact sections. About, Research, and Projects are intentionally blank; Contact uses email and Douyin icon links without visible addresses or handles. The Douyin icon currently searches the supplied ID until a verified profile share URL is provided. HTML comments mark insertion points.
 - `style.css`: layout, colors, typography, and responsive styles.
 - `assets/portrait.jpg`: user-provided homepage portrait from `112018.JPG`.
 
