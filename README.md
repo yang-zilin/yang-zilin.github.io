@@ -35,3 +35,7 @@ Repository Settings → Pages → Deploy from a branch → `main` → `/ (root)`
 The primary domain is `zilinyang.com`, registered with GoDaddy, with DNS managed by Cloudflare on the Free plan. GitHub Pages serves the site using the tracked `CNAME` file.
 
 See [domain configuration](docs/domain-setup.md) for DNS records, preserved service records, redirects, and HTTPS setup.
+
+## Search indexing
+
+`robots.txt` allows crawling and points to `sitemap.xml`. The sitemap lists the canonical homepage. Keep the Google verification meta tag in `index.html` to retain Search Console ownership. The homepage includes a GitHub contact icon and ProfilePage/Person structured data connecting the site to `yang-zilin`.
