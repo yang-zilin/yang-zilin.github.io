@@ -39,3 +39,5 @@ See [domain configuration](docs/domain-setup.md) for DNS records, preserved serv
 ## Search indexing
 
 `robots.txt` allows crawling and points to `sitemap.xml`. The sitemap lists the canonical homepage. Keep the Google verification meta tag in `index.html` to retain Search Console ownership. The homepage includes a GitHub contact icon and ProfilePage/Person structured data connecting the site to `yang-zilin`.
+
+On 2026-11-13, the URL-prefix property `https://zilinyang.com/` was verified through the HTML meta tag in Google Search Console. The sitemap was submitted and returned `Success`, with one discovered page. The initial URL inspection reported `URL is unknown to Google` and no previous crawl; this is an indexing snapshot, not a live status. Search Console ownership verification and sitemap submission do not guarantee indexing or ranking.
